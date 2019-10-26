@@ -66,6 +66,7 @@ class NavigatorNavigationBar extends React.Component {
       presentedIndex: PropTypes.number,
     }),
     navigationStyles: PropTypes.object,
+    pointerEvents: PropTypes.string,
     style: ViewPropTypes.style,
   };
 
@@ -158,6 +159,7 @@ class NavigatorNavigationBar extends React.Component {
     var navBarStyle = {
       height: this.props.navigationStyles.General.TotalNavHeight,
     };
+    var pointerEvents = this.props.pointerEvents != null ? this.props.pointerEvents : 'auto';
     var navState = this.props.navState;
     var components = navState.routeStack.map((route, index) =>
       COMPONENT_NAMES.map(componentName =>
@@ -168,6 +170,7 @@ class NavigatorNavigationBar extends React.Component {
     return (
       <View
         key={this._key}
+        pointerEvents={pointerEvents}
         style={[styles.navBarContainer, navBarStyle, this.props.style]}>
         {components}
       </View>
